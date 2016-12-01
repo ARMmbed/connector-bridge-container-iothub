@@ -2,50 +2,7 @@ mbed Device Connector integration bridge image importer for Microsoft IoTHub
 
 Original Date: April 22, 2016
 
-    4/22/2016: Initial checkin. Added configurator supporting url-unsafe values
-
-    4/26/2016: Updated with latest bridge runtime. Bi-directional support enabled. CoAP get() fixes/enablement.
-
-
-    5/03/2016: Updated with latest changes from bridge source... bug fixes.
-
-    5/06/2016: Updated with latest changes from bridge source... bug fixes.
-
-    5/13/2016: Updated with latest changes from bridge source... bug fixes. Support for put async replies.
-
-    5/17/2016: Updated with latest bridge. Support for device attribute flow into cloud device description. JSON type parsing fixes.
-
-    5/26/2016: Updated with latest bridge. JSON type parsing fixes.
-
-    5/27/2016: Updated with latest bridge. Enabled REST versioning support
-
-    6/11/2016: Updated with latest bridge.
-
-    6/29/2016: Updated with latest bridge.
-
-    8/13/2016: Updated with latest bridge.
-
-    8/14/2016: Updated with latest bridge.
-
-    8/16/2016: Updated with latest bridge. Bridge now optionally supports long polling.
-
-    8/23/2016: Updated with latest bridge.
-
-    8/24/2016: Updated with latest bridge.
-
-    8/31/2016: Updated with latest bridge. Minor fix to CoAP responses where "verb" key is now "coap_verb" key - aligns with request payload structure.
-
-    9/13/2016: Updated with latest bridge.
-
-    9/20/2016: Updated with latest bridge.
-
-    11/3/2016: Updated with latest bridge.
-
-    11/9/2016: Updated with latest bridge.
-
-    11/12/2016: Updated with latest bridge.
-
-    11/13/2016: Updated with latest bridge.
+    12/2/2016: Updated with latest bridge.
 
 Container Bridge source (Apache 2.0 licensed - Enjoy!): https://github.com/ARMmbed/connector-bridge.git
 
