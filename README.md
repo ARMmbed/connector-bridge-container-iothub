@@ -1,16 +1,7 @@
 mbed Device Connector integration bridge image importer for Microsoft IoTHub 
 
-Original Date: April 22, 2016
+6/20/2017: Cleanups, updates to properties editor and overall structure
 
-5/3/2017: Updated with the latest bridge.
-
-4/26/2017: Updated with the latest bridge (patches for R1.2 GA)
-
-1/26/2017: Updated with the latest bridge. 
-
-1/17/2017: Updated with the latest bridge. Happy New Year!
-
-Container Bridge source (Apache 2.0 licensed - Enjoy!): https://github.com/ARMmbed/connector-bridge.git
 
 
 Container Bridge Instance Installation:
@@ -18,16 +9,6 @@ Container Bridge Instance Installation:
 1). Clone this repo into a Linux instance that supports docker images
 
 2). cd into the cloned repo and run: ./run-reload-bridge.sh
-
-If Starting on a non-Azure Container Instance: 
-
-3). Note the public IP address of your linux runtime - update "start-bridge.sh" and replace "192.168.1.230" with yours
-
-4). invoke: ./start-bridge.sh
-
-If Starting on an Azure Container Instance:
-
-3). invoke ./start-bridge-azure.sh
 
 Once the container instance is live, you must configure the bridge and bind it between your mbed Connector account and your IoTHub Account in Azure. 
 
@@ -60,17 +41,9 @@ Enter each of IoTHub name, SAS Token, and Connector API Token
 
     - After all 3 are entered and saved, press "RESTART"
 
-Your IoTHub-Connector bridge should now be configured and operational. 
+Your Connector bridge should now be configured and operational. 
 
-For your mbed endpoint, you can clone and build (via yotta) this: https://github.com/ARMmbed/mbed-ethernet-sample-withdm
-
-    - This sample assumes you are using the NXP K64F + mbed Application Shield
-
-Additionally, I have a sample Java application that can receive and respond to IoTHub messages via the Microsoft IoTHub Service SDK. The project can be found here: https://github.com/ARMmbed/iot-event-hub-responder 
-
-Enjoy!
-
-Copyright 2015. ARM Ltd. All rights reserved.
+Copyright 2017. ARM Ltd. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

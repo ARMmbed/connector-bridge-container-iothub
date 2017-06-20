@@ -3,6 +3,7 @@
 update_hosts()
 {
     sudo /home/arm/update_hosts.sh
+    rm /home/arm/update_hosts.sh
 }
 
 run_supervisord()
@@ -10,23 +11,23 @@ run_supervisord()
    /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf 2>&1 1>/tmp/supervisord.log
 }
 
-run_bridge()
+run_connector_bridge()
 {
    cd /home/arm
-   su -l arm -s /bin/bash -c "/home/arm/restart.sh"
+   su -l arm -s /bin/bash -c "/home/arm/restart.sh &"
 }
 
-run_configurator()
+run_properties_editor()
 {
-  cd /home/arm/configurator
-  su -l arm -s /bin/bash -c "/home/arm/configurator/runConfigurator.sh 2>&1 1> /tmp/configurator.log &"
+  cd /home/arm/properties-editor
+  su -l arm -s /bin/bash -c "/home/arm/properties-editor/runPropertiesEditor.sh 2>&1 1> /tmp/properties-editor.log &"
 }
 
 enable_long_polling() {
    LONG_POLL="$2"
    if [ "${LONG_POLL}" = "use-long-polling" ]; then
-        DIR="mds/connector-bridge/conf"
-        FILE="gateway.properties"
+        DIR="connector-bridge/conf"
+        FILE="service.properties"
         cd /home/arm
         sed -e "s/mds_enable_long_poll=false/mds_enable_long_poll=true/g" ${DIR}/${FILE} 2>&1 1> ${DIR}/${FILE}.new
         mv ${DIR}/${FILE} ${DIR}/${FILE}.poll
@@ -41,8 +42,8 @@ set_mdc_api_token() {
         API_TOKEN="$3"
    fi
    if [ "${API_TOKEN}X" != "X" ]; then
-        DIR="mds/connector-bridge/conf"
-        FILE="gateway.properties"
+        DIR="connector-bridge/conf"
+        FILE="service.properties"
         cd /home/arm
         sed -e "s/mbed_connector_api_token_goes_here/${API_TOKEN}/g" ${DIR}/${FILE} 2>&1 1> ${DIR}/${FILE}.new
         mv ${DIR}/${FILE} ${DIR}/${FILE}.mdc_api_token
@@ -57,8 +58,8 @@ set_iothub_hubname() {
         HUB_NAME="$4"
    fi
    if [ "${HUB_NAME}X" != "X" ]; then
-        DIR="mds/connector-bridge/conf"
-        FILE="gateway.properties"
+        DIR="connector-bridge/conf"
+        FILE="service.properties"
         cd /home/arm
         sed -e "s/Azure_IoTHub_Name_Goes_Here/${HUB_NAME}/g" ${DIR}/${FILE} 2>&1 1> ${DIR}/${FILE}.new
         mv ${DIR}/${FILE} ${DIR}/${FILE}.iothub_hubname
@@ -76,8 +77,8 @@ set_iothub_sas_token() {
         SAS_TOKEN=""
    fi
    if [ "${SAS_TOKEN}X" != "X" ]; then
-        DIR="mds/connector-bridge/conf"
-        FILE="gateway.properties"
+        DIR="connector-bridge/conf"
+        FILE="service.properties"
         cd /home/arm
         sed -e "s/Azure_IoTHub_OWNER_SAS_Token_Goes_Here/${SAS_TOKEN}/g" ${DIR}/${FILE} 2>&1 1> ${DIR}/${FILE}.new
         mv ${DIR}/${FILE} ${DIR}/${FILE}.iothub_sas_token
@@ -99,8 +100,8 @@ main()
    set_iothub_hubname $*
    set_iothub_sas_token $*
    set_perms $*
-   run_bridge
-   run_configurator
+   run_properties_editor
+   run_connector_bridge
    run_supervisord
 }
 
