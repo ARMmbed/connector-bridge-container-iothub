@@ -1,4 +1,6 @@
-mbed Device Connector/mbed Cloud integration bridge for Microsoft Azure IoTHub 
+arm PELION Device Shadow bridge for Microsoft IoTHub                  
+  
+08/21/2018: updated bridge, properties editor, configuration file structure
 
 08/20/2018: updated bridge and properties editor
 
